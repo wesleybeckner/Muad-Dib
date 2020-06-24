@@ -22,19 +22,19 @@ import numpy as np
 import datetime
 from utils import *
 
-VALID_USERNAME_PASSWORD_PAIRS = {
-    'caravel': 'assessment'
-}
+# VALID_USERNAME_PASSWORD_PAIRS = {
+#     'caravel': 'assessment'
+# }
 
 app = dash.Dash(
     __name__, meta_tags=[{"name": "viewport", "content": "width=device-width"}],
     external_stylesheets=[dbc.themes.BOOTSTRAP]
 )
 
-auth = dash_auth.BasicAuth(
-    app,
-    VALID_USERNAME_PASSWORD_PAIRS
-)
+# auth = dash_auth.BasicAuth(
+#     app,
+#     VALID_USERNAME_PASSWORD_PAIRS
+# )
 
 server = app.server
 
@@ -66,7 +66,7 @@ server = app.server
 #  'Min Date',
 #  'Max Date']
 dates = ['Batch Completion Date', 'First Formulated Consumed Material', 'TO.80 Log Date']
-production_df = pd.read_csv('data/Wonka.csv', parse_dates=dates)
+production_df = pd.read_csv('data/Wonka Filtered.csv', parse_dates=dates)
 descriptors = ['Family', 'Tank Number',
        'Cost Center', 'Technology', 'Product', 'Parent Batch Actual Qty']
 time_components = ['PA Time',
@@ -575,7 +575,7 @@ UPLOAD = html.Div([
         html.Div([
         dcc.Dropdown(id='preset-files',
                      multi=False,
-                     options=[{'label': i, 'value': i} for i in ['Cleveland Filtered', 'Cleveland', 'Oak Creek']],
+                     options=[{'label': i, 'value': i} for i in ['Wonka Filtered', 'Wonka']],
                      # placeholder="Select Cloud Dataset",
                      className='dcc_control',
                      style={
